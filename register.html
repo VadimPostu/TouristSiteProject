@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<title> Tourism & stuff </title>
+	<script src="js/angular.js"></script>
+	<script src="js/js.js"></script>
+	<script src="js/jquery.js"></script>
+	<script src="js/angularRegister.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div class = "body" ng-controller="MyController">
+		<form method= "POST" class = "registerInput">
+			<input type="text" placeholder="Name" id="name" ng-model="name"
+				ng-init="focus1 = false" ng-focus="focus1 = true" ng-blur="focus1 = false" ng-change="nameChange()">
+			<span ng-show="focus1">{{ message.name }}</span>
+			<span> {{ error.name }} </span>
+			<br>
+			
+			<input type="text" placeholder="Last Name" id="lastName"
+				ng-init="focus2 = false" ng-focus="focus2 = true" ng-blur="focus2 = false"  ng-model="lastName" ng-change="lastNameChange()">
+			<span ng-show="focus2">{{ message.lastName }}</span>
+			<span> {{ error.lastName }} </span>
+			<br>
+			
+			<input type="email" placeholder="email" id="email" ng-model="email" ng-change="emailChange()">
+			<br>
+			
+			<input type="password" placeholder="password" id="password"
+				ng-model="password" ng-init="focus3 = false" ng-focus="focus3 = true" ng-blur="focus3 = false"  ng-change="passwordChange()">
+			<span ng-show="focus3">{{ message.password }}</span>
+			<span> {{ error.password }} </span>
+			<br>
+			
+			<input type="submit" value="register" id="registerButton" class="button">
+		</form>
+	</div>
+	<script type="text/javascript">
+		loadHeaderAndFooter();
+		if(!logged) showLogin()
+		else hideStuff();
+	</script>
+</body>
+</html>

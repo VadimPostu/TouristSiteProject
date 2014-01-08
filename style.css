@@ -1,0 +1,75 @@
+body {
+	background-color: #EDF0F5;
+	margin: 0px;
+}
+.menu a:link {color: #333333;}
+.menu a:visited {color: #333333;}
+.menu a:hover {color: #535383;}
+.menu a:active {color: #333333;}
+.header {
+	background-color: #3B5998;
+	background-image: url('images/header.png');
+	margin: 0px;
+	border: 0px;
+	height: 150px;
+}
+.login {
+	position: absolute;
+	border: 0px;
+	right : 20px;
+	margin-top: 20px;
+}
+.body {
+	margin-left: 180px;
+	min-height:500px;
+	margin-top: 10px;
+	margin-bottom: 60px;
+	margin-right: 400px;
+}
+.footer{
+	margin-left: 180px;
+	margin-right: 400px;
+	text-align: center;
+}
+.menu{
+	text-decoration: none;
+}
+.menu td {
+	margin: 0px;
+	width: 130px;
+	background-color: #BFBFEF;
+	text-align: center;
+}
+.menu table {
+	position: absolute;
+	border: 0px;
+	margin-left: 180px;
+	margin-top: 100px;
+}
+.button {
+	background: #4B79A8;
+	color: #FFFFFF;
+	border: 1px solid #1D2A5B;
+}
+#feedbackText {
+	width: 350px;
+	height: 180px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+#feedbackSendButton {
+	margin-left: 312px;
+}
+#registerButton{
+	margin-left: 150px;
+}
+.invisible {
+	display: none;
+}
+.registerInput span {
+	color: red;
+}
+.logOut {
+	color: #FFFFFF;
+	text-decoration: none;
+}
