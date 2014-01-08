@@ -1,8 +1,10 @@
 var app = angular.module('myApp', []);
 
-var data;
-
-app.controller("MyController", function($scope) {
+app.controller("MyController", function($scope, $http) {
+	$scope.data = {name : "",
+				lastName : "",
+				email: "",
+				password: ""}
 	$scope.message = {name: "You should have a name.",
 					lastName: "You should have a last name.",
 					email: "You should enter a valid email.",
@@ -37,19 +39,19 @@ app.controller("MyController", function($scope) {
 	}
 	$scope.isValidName = function() {
 		var re = /^[A-Z]{2,32}$/i;
-		return re.test($scope.name);
+		return re.test($scope.data.name);
 	}
 	$scope.isValidLastName = function() {
 		var re = /^[A-Z]{2,32}$/i;
-		return re.test($scope.lastName);
+		return re.test($scope.data.lastName);
 	}
 	$scope.isValidPassword = function() {
 		var re = /^[a-z0-9_-]{6,18}$/i;
-		return re.test($scope.password);
+		return re.test($scope.data.password);
 	}
 	$scope.isValidEmail = function() {
 		var re = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/igm;
-		return re.test($scope.email);
+		return re.test($scope.data.email);
 	}
 	$scope.testRegistration = function(){
 		var nameValid = $scope.isValidName();
@@ -62,33 +64,33 @@ app.controller("MyController", function($scope) {
 		if(!passwordValid) $scope.error.password = "Your password is Invalid!";
 		if(!emailValid) $scope.error.email = "Your email is Invalid!";
 		
-		if( nameValid && lastNameValid && passwordValid && emailValid ) {
-			data = {
-				name : $scope.name,
-				lastName : $scope.lastName,
-				password : $scope.password,
-				email : $scope.email
-			}
-			return true;
+		return nameValid && lastNameValid && passwordValid && emailValid;
+	}
+	
+	$scope.submitForm = function() {		
+		if($scope.testRegistration()){
+			$scope.sendRequest();
 		}
-		return false;
+	}
+	
+	$scope.sendRequest = function() {
+		$http({
+			method 	: 'POST',
+			url		: 'php/register.php',
+			data	: $.param($scope.data),
+			headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+		}).success(function(data) {
+            console.log(data);
+
+            if (!data.success) {
+            	// if not successful, bind errors to error variables
+                $scope.error.name = data.errors.name;
+                $scope.error.lastName = data.errors.lastName;
+            }
+			else {
+            	// if successful, bind success message to message
+                alert(data.message);
+            }
+		});
 	}
 });
-/*
-$(document).ready(function(){
-		$('#registerButton').submit( function(event){
-			alert("something");
-			event.preventDefault();
-			
-			if($scope.testRegistration()){
-				$.ajax({
-					type: "post",
-					url: "register.php",
-					data: data,
-					dataType: "json"
-					success: function(data, status) {alert("YEY")},
-					error: 	function(a, text, error){alert(error);}
-				}); 
-			}
-		});
-	});*/

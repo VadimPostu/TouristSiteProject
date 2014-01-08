@@ -10,24 +10,24 @@
 </head>
 <body>
 	<div class = "body" ng-controller="MyController">
-		<form method= "POST" class = "registerInput">
-			<input type="text" placeholder="Name" id="name" ng-model="name"
+		<form method= "POST" class = "registerInput" ng-submit = "submitForm()">
+			<input type="text" placeholder="Name" id="name" ng-model="data.name"
 				ng-init="focus1 = false" ng-focus="focus1 = true" ng-blur="focus1 = false" ng-change="nameChange()">
 			<span ng-show="focus1">{{ message.name }}</span>
 			<span> {{ error.name }} </span>
 			<br>
 			
 			<input type="text" placeholder="Last Name" id="lastName"
-				ng-init="focus2 = false" ng-focus="focus2 = true" ng-blur="focus2 = false"  ng-model="lastName" ng-change="lastNameChange()">
+				ng-init="focus2 = false" ng-focus="focus2 = true" ng-blur="focus2 = false"  ng-model="data.lastName" ng-change="lastNameChange()">
 			<span ng-show="focus2">{{ message.lastName }}</span>
 			<span> {{ error.lastName }} </span>
 			<br>
 			
-			<input type="email" placeholder="email" id="email" ng-model="email" ng-change="emailChange()">
+			<input type="email" placeholder="email" id="email" ng-model="data.email" ng-change="emailChange()">
 			<br>
 			
 			<input type="password" placeholder="password" id="password"
-				ng-model="password" ng-init="focus3 = false" ng-focus="focus3 = true" ng-blur="focus3 = false"  ng-change="passwordChange()">
+				ng-model="data.password" ng-init="focus3 = false" ng-focus="focus3 = true" ng-blur="focus3 = false"  ng-change="passwordChange()">
 			<span ng-show="focus3">{{ message.password }}</span>
 			<span> {{ error.password }} </span>
 			<br>
