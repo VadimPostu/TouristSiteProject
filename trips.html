@@ -12,8 +12,13 @@
 	<div>
 	<script type="text/javascript">
 		loadHeaderAndFooter();
-		if(!logged) showLogin()
-		else hideStuff();
+		if(getCookie("username") != "") {
+			showWelcomeBackMessage();
+		}
+		else {
+			showLoginForm();
+			removeInvisibleClass();
+		}
 	</script>
 </body>
 </html>

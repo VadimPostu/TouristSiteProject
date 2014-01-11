@@ -63,6 +63,9 @@ body {
 #registerButton{
 	margin-left: 150px;
 }
+#loginInfo  {
+	color: red;
+}
 .invisible {
 	display: none;
 }

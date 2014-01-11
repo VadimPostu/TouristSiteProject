@@ -11,10 +11,14 @@
 		home
 	<div>
 	<script type="text/javascript">
-		sendRequest();
 		loadHeaderAndFooter();
-		if(!logged) showLogin()
-		else hideStuff();
+		if(getCookie("username") != "") {
+			showWelcomeBackMessage();
+		}
+		else {
+			showLoginForm();
+			removeInvisibleClass();
+		}
 	</script>
 </body>
 </html>
