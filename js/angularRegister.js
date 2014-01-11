@@ -104,9 +104,8 @@ app.controller("MyController", function($scope, $http) {
             }
 			else {
             	// if successful, bind success message to message
-				message = "<br><p>Congratulations " + data.name + " " + data.lastName + " " + data.email + ", your registration was successful!</p>";
+				message = "<br><p>Thanks, " + data.name + ", for your registration.</p>";
                 document.getElementById("registerBody").innerHTML = message;
-				
             }
 		});
 	}

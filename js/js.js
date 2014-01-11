@@ -112,3 +112,19 @@ function deleteCookie() {
 	document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
 	location.reload();
 }
+
+function sendFeedback() {
+	$(document).ready(function(){
+		var content = $("#feedbackText").val();
+		data = {text : content};
+		$.ajax({
+			data: 		data,
+			dataType: 	"json",
+			url: 		"php/feedback.php",
+			success:	function(data, status){
+				$('.body').html("<h3 style = 'color:#35674f'>" + data['message'] + "</h3>");
+			}
+		});
+		
+	});
+}

@@ -9,6 +9,10 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+	<script> if(getCookie("username") != "") {
+			window.location = "http://localhost/project/home.html";
+		}
+	</script>
 	<div class = "body" id = "registerBody" ng-controller="MyController">
 		<form method= "POST" class = "registerInput" ng-submit = "submitForm()">
 			<input type="text" placeholder="Name" id="name" ng-model="data.name"
@@ -38,10 +42,7 @@
 	</div>
 	<script type="text/javascript">
 		loadHeaderAndFooter();
-		if(getCookie("username") != "") {
-			showWelcomeBackMessage();
-		}
-		else {
+		if(getCookie("username") == "") {
 			showLoginForm();
 			removeInvisibleClass();
 		}
