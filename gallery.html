@@ -1,16 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="galeryApp">
 <head>
 	<title> 
 		Tourism & stuff
 	</title>
 	<script src="js/js.js"></script>
 	<script src="js/jquery.js"></script>
+	<script src="js/angular.js"></script>
+	<script src="js/angularGallery.js"></script>
+	<script src="js/lightbox-2.6.min.js"></script>
+	<script src="js/modernizr.custom.js"></script>
+	<link rel="stylesheet" type="text/css" href="bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="lightbox.css">
 </head>
 <body>
 	<div class = "body">
-		some pictures
+	<div class="wrapper">
+	<section id="examples" class="section examples-section">
+		<div class="image-row">
+			<div class="image-set">
+				<a href="img/england.jpg" class="example-image-link" data-lightbox="images" title="The misterious beauty of england">
+					<img class="example-image" src="img/england.jpg" width="150" height="150"/></a>
+				<a href="img/scotland.jpg" class="example-image-link" data-lightbox="images" title="hills and hills only">
+					<img class="example-image" src="img/scotland.jpg" width="150" height="150"/></a>
+				<a href="img/usa.jpg" class="example-image-link" data-lightbox="images" title="Where i want to be now">
+					<img class="example-image" src="img/usa.jpg" width="150" height="150"/></a>
+				<a href="img/yellowstone.jpg" class="example-image-link" data-lightbox="images" title="Where i want to be now">
+					<img class="example-image" src="img/yellowstone.jpg" width="150" height="150"/></a>
+			<div>
+		<div>
+	</section>
+	</div>
 	<div>
 	<script type="text/javascript">
 		loadHeaderAndFooter();

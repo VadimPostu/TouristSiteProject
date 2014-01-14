@@ -1,5 +1,5 @@
 <?
-	$data = "adadadlkjsfa;slkdfjalsjkfhasfdk";
+	$data = $_POST['text'];
 	$ret = array();
 	formatData();
 	function formatData(){

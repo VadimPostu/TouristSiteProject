@@ -6,6 +6,7 @@
 	<script src="js/js.js"></script>
 	<script src="js/jquery.js"></script>
 	<script src="js/angularRegister.js"></script>
+	<link rel="stylesheet" type="text/css" href="bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
@@ -15,29 +16,29 @@
 	</script>
 	<div class = "body" id = "registerBody" ng-controller="MyController">
 		<form method= "POST" class = "registerInput" ng-submit = "submitForm()">
-			<input type="text" placeholder="Name" id="name" ng-model="data.name"
+			<input type="text" placeholder="Name" class="form-group" id="name" ng-model="data.name"
 				ng-init="focus1 = false" ng-focus="focus1 = true" ng-blur="focus1 = false" ng-change="nameChange()">
 			<span ng-show="focus1">{{ message.name }}</span>
 			<span> {{ error.name }} </span>
 			<br>
 			
-			<input type="text" placeholder="Last Name" id="lastName"
+			<input type="text" placeholder="Last Name" id="lastName" class="form-group"
 				ng-init="focus2 = false" ng-focus="focus2 = true" ng-blur="focus2 = false"  ng-model="data.lastName" ng-change="lastNameChange()">
 			<span ng-show="focus2">{{ message.lastName }}</span>
 			<span> {{ error.lastName }} </span>
 			<br>
 			
-			<input type="email" placeholder="email" id="email" ng-model="data.email" ng-change="emailChange()">
+			<input type="email" placeholder="email" id="email" class="form-group" ng-model="data.email" ng-change="emailChange()">
 			<span> {{ error.email }} </span>
 			<br>
 			
-			<input type="password" placeholder="password" id="password"
+			<input type="password" placeholder="password" id="password" class="form-group"
 				ng-model="data.password" ng-init="focus3 = false" ng-focus="focus3 = true" ng-blur="focus3 = false"  ng-change="passwordChange()">
 			<span ng-show="focus3">{{ message.password }}</span>
 			<span> {{ error.password }} </span>
 			<br>
 			
-			<input type="submit" value="register" id="registerButton" class="button">
+			<input type="submit" value="register" id="registerButton" class="btn btn-default form-group">
 		</form>
 	</div>
 	<script type="text/javascript">

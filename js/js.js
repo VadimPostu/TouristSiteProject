@@ -1,33 +1,36 @@
 function removeInvisibleClass(){
-	$(document).ready(function(){ $('.register').removeClass('invisible'); });
+	$(document).ready(function(){ 
+		$('.register').removeClass('invisible'); 
+		$('.trips').addClass('invisible');
+	});
 }
 
 function addInvisibleClass(){
-	$(document).ready(function(){ $('.register').addClass('invisible'); });
+	$(document).ready(function(){ 
+		$('.register').addClass('invisible'); 
+		$('.trips').removeClass('invisible'); 
+	});
 }
 
 function showWelcomeBackMessage(){
 	$(document).ready(function(){
 		var user = getCookie("username");
-		var data = '<div class= "login"> <span style="color:#FFFFFF">Welcome back, ' + user + '</span> <div>';
-		$('.header').append(data);
-		$('.login').append('<a class= "logOut" onClick= "deleteCookie()" href= "#"> > Log off </a>');
+		var data = '<div class="navbar-right"> <span style="color:#FFFFFF">Welcome back, ' + user + '</span> <div>';
+		$('.navbar').append(data);
+		$('.navbar').append('<br><a class= "logOut navbar-right" onClick= "deleteCookie()" href= "#"> > Log off </a>');
 		addInvisibleClass();
 	});
 }
 
 function loadHeaderAndFooter(){
 	$(document).ready(function(){
-		var data = '<div class = "header"><div class = "menu">'+
-				'<table>'+
-				'<tr>'+
-				'<td><a href="home.html" class="menu">home</a></td>'+
-				'<td><a href="trips.html" class="menu">trips</a></td>'+
-				'<td><a href="gallery.html" class="menu">gallery</a></td>'+
-				'<td><a href="feedback.html" class="menu">feedback</a></td>'+
-				'<td class="register"><a href="register.html" class="menu">register</a></td>'+
-				'</tr>'+
-				'</div><div>';
+		var data = '<div class = "header"><nav class="navbar navbar-inverse" role="navigation">'+
+				'<a href="home.html" class="navbar-brand" >home</a>'+
+				'<a href="trips.html" class="navbar-brand trips" >trips</a>'+
+				'<a href="gallery.html" class="navbar-brand" >gallery</a>'+
+				'<a href="feedback.html" class="navbar-brand" >feedback</a>'+
+				'<a href="register.html" class="navbar-brand register" >register</a>'+
+				'</nav></div>';
 		$('body').prepend(data);
 		$('body').append('<div class="footer"><em> &#169 V </em><div>');
 	});
@@ -35,16 +38,14 @@ function loadHeaderAndFooter(){
 
 function showLoginForm(){
 	$(document).ready(function(){
-		var data = '<form method = "POST" class = "login" id = "loginForm" onsubmit = "login()">' +
-					'<input type="email" placeHolder="email" id="email" tabindex="1">' +
-					'<input type="password" placeHolder="password" id="pass" tabindex="2">' +
-					'<input type="submit" value="Log In" tabindex="3" class="button">' +
+		var data = '<form method = "POST" class = "navbar-form navbar-right" id = "loginForm" onsubmit = "login()">' +
+					'<div class="form-group"><input type="email" placeHolder="email" class= "form-control" id="email" tabindex="1"></div>' +
+					'<div class="form-group"><input type="password" placeHolder="password" class= "form-control" id="pass" tabindex="2"></div>' +
+					'<input type="submit" value="Log In" tabindex="3" class="button btn btn-default">' +
 					'</form>' +
-					'<br>'+
-					'<br>'+
 					'<span class = "login" id = "loginInfo"></span>';
 					
-		$('.header').append(data);
+		$('.navbar').append(data);
 	});
 }
 
@@ -58,6 +59,9 @@ function login(){
 		info.password = password;
 		if(!isValidPassword(password)){
 			$("#loginInfo").text("Your password is invalid!");
+		}
+		if(password == "") {
+			$("#loginInfo").text("Enter a password!");
 		}
 		if(isValidEmail(email) && isValidPassword(password)) {
 			$.ajax({
@@ -115,16 +119,20 @@ function deleteCookie() {
 
 function sendFeedback() {
 	$(document).ready(function(){
+		$("#mmm").html("").fadeIn();
 		var content = $("#feedbackText").val();
 		data = {text : content};
-		$.ajax({
-			data: 		data,
-			dataType: 	"json",
-			url: 		"php/feedback.php",
-			success:	function(data, status){
-				$('.body').html("<h3 style = 'color:#35674f'>" + data['message'] + "</h3>");
-			}
-		});
-		
+		if(content != "")
+			$.ajax({
+				type: 		"POST",
+				data: 		data,
+				dataType: 	"json",
+				url: 		"php/feedback.php",
+				success:	function(data, status){
+					$('.body').html("<h3  class='alert alert-success'>" + data['message'] + "</h3>");
+				}
+			});
+		else
+			$("#mmm").append("<div class='alert alert-danger'> Please enter a feedback message </div").fadeOut(2000);
 	});
 }

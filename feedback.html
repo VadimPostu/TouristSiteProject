@@ -4,6 +4,7 @@
 	<title> Tourism & stuff </title>
 	<script src="js/js.js"></script>
 	<script src="js/jquery.js"></script>
+	<link rel="stylesheet" type="text/css" href="bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
@@ -12,8 +13,9 @@
 		<br>
 		<textarea id="feedbackText" title="What's on your mind?" name="xhpc_message_text" placeholder="What's on your mind?" role="textbox" aria-autocomplete="list" autocomplete="off" aria-expanded="false" aria-owns="js_0" aria-haspopup="true"></textarea>
 		<br>
-		<input type="button" value="send" id="feedbackSendButton" class="button" onClick = "sendFeedback()">
-		
+		<input type="button" value="send" id="feedbackSendButton" class="btn btn-default" onClick = "sendFeedback()">
+		<br><br>
+		<span id="mmm"></span>
 	<div>
 	<script type="text/javascript">
 		loadHeaderAndFooter();
