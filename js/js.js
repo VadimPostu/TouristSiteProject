@@ -136,3 +136,55 @@ function sendFeedback() {
 			$("#mmm").append("<div class='alert alert-danger'> Please enter a feedback message </div").fadeOut(2000);
 	});
 }
+
+function bookTrip() {
+	$(document).ready(function() {
+	});
+}
+
+function loadTrips() {
+	$(document).ready(function() {
+		var cookie = getCookie('username');
+		var data = {email : cookie};
+		$.ajax({
+				type: 		"POST",
+				url: 		"php/trips.php",
+				data: 		data,
+				dataType: 	'json',
+				success: 	function(something, status){
+								generateTripsPage(something);
+							}
+			});
+	});
+}
+
+function generateTripsPage(data){
+	$(document).ready(function() {
+		for(var element in data){
+			addBlock(element);
+		}
+	});
+}
+
+function addBlock(data){
+	$(document).ready(function() {
+		var code = '<div class="tripBlock"> '+
+				'<strong>' + data['destination'] 	+ '</strong><br>'+
+				'<strong>' + data['tripDate'] 		+ '</strong><br>'+
+				'<strong>' + data['price'] 			+ '</strong><br>'+
+				'<strong>' + data['tickets'] 		+ ' tickets available</strong><br>';
+		var notBooked 	= '<button type="button" class="btn btn-success" onClick = "bookTrip()">book</button>'+
+			'</div>';
+		var booked 		='<button type="button" class="btn btn-danger" onClick = "cancelBooking()">Cancel booking</button>'+
+			'</div>';
+				
+		if(data['booked']) code += booked;
+		else code += notBooked;
+		
+		$(".tripsBody").append(code);
+	});
+		
+}
+
+
+

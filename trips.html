@@ -1,24 +1,22 @@
 <!DOCTYPE html>
-<html ng-app="newApp">
+<html>
 <head>
 	<title> Tourism & stuff </title>
 	<script src="js/js.js"></script>
 	<script src="js/jquery.js"></script>
-	<script src="js/angular.js"></script>
-	<script src="js/angularTrips.js"></script>
 	<link rel="stylesheet" type="text/css" href="bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body ng-controller="TripController">
+<body>
 	<script> if(getCookie("username") == "") {
 			window.location = "http://localhost/project/home.html";
 		}
 	</script>
-	<div class = "body">
-		something about trips
-	<div>
+	<div class = "tripsBody">
+	</div>
 	<script type="text/javascript">
 		loadHeaderAndFooter();
+		loadTrips();
 		if(getCookie("username") != "") {
 			showWelcomeBackMessage();
 		}
